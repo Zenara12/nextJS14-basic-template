@@ -11,6 +11,14 @@ const PostCard = ({ post }) => {
 						<Image src={post.img} alt='' fill className={styles.img} />
 					</div>
 				)}
+				{/* <div className={styles.imgContainer}>
+					<Image
+						src={`https://media.istockphoto.com/id/2164764645/photo/students-giving-exam-test-in-university.jpg?s=1024x1024&w=is&k=20&c=TqtlGrsm31v-29sO1ZhkuB8aji23exrq12M-GtKBoTA=`}
+						alt=''
+						fill
+						className={styles.img}
+					/>
+				</div> */}
 				<span className={styles.date}>
 					{post.createdAt?.toString().slice(4, 16)}
 				</span>

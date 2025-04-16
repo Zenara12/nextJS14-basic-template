@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import SingleLink from './SingleLink';
 import styles from './navlinks.module.css';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const navigations = [
 	{ title: 'Home', path: '/' },
@@ -23,7 +24,15 @@ const signOut = () => {
 
 const Navlinks = () => {
 	const [open, setOpen] = useState(false);
+	const pathname = usePathname();
+	const [currentPath, setCurrentPath] = useState(pathname);
 
+	useEffect(() => {
+		if (currentPath !== pathname) {
+			setCurrentPath(pathname);
+			setOpen(false);
+		}
+	}, [pathname]);
 	return (
 		<div>
 			<div className={styles.links}>
@@ -36,11 +45,7 @@ const Navlinks = () => {
 						{isAdmin && (
 							<SingleLink item={{ title: 'Admin', path: '/admin' }} />
 						)}{' '}
-						<button
-							type='button'
-							onClick={() => signOut()}
-							className={styles.logout}
-						>
+						<button type='button' onClick={signOut} className={styles.logout}>
 							Sign-out
 						</button>
 					</>
