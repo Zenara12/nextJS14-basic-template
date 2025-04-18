@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './postCard.module.css';
 import Link from 'next/link';
+import { formatDate } from '@/lib/formatdate';
 
 const PostCard = ({ post }) => {
 	return (
@@ -20,7 +21,7 @@ const PostCard = ({ post }) => {
 					/>
 				</div> */}
 				<span className={styles.date}>
-					{post.createdAt?.toString().slice(4, 16)}
+					{post?.createdAt && formatDate(post?.createdAt)}
 				</span>
 			</div>
 			<div className={styles.bottom}>
